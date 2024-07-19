@@ -1,13 +1,13 @@
 :root {
-    --primary-color: #FF6B6B;
-    --secondary-color: #4ECDC4;
-    --tertiary-color: #45B7D1;
-    --quaternary-color: #FFA07A;
-    --background-color: #F7F7F7;
-    --section-background: #FFFFFF;
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --tertiary-color: #e74c3c;
+    --quaternary-color: #f39c12;
+    --background-color: #f5f5f5;
+    --section-background: #ffffff;
     --text-color: #333333;
-    --text-light: #777777;
-    --hover-color: #FF8E8E;
+    --text-light: #666666;
+    --hover-color: #2980b9;
 }
 
 @keyframes fadeIn {
@@ -15,7 +15,7 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes rainbow {
+@keyframes subtleRainbow {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
@@ -48,18 +48,18 @@ header {
 
 h1 {
     font-size: 48px;
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 10px;
     background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--tertiary-color), var(--quaternary-color));
     background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: rainbow 5s ease infinite;
+    animation: subtleRainbow 5s ease infinite;
 }
 
 h2 {
     font-size: 24px;
-    font-weight: 400;
+    font-weight: 500;
     color: var(--text-light);
 }
 
@@ -80,6 +80,7 @@ h2 {
 
 .section h3 {
     font-size: 28px;
+    font-weight: 700;
     margin-bottom: 20px;
     color: var(--primary-color);
 }
@@ -91,16 +92,17 @@ h2 {
 }
 
 .skill {
-    background-color: rgba(78, 205, 196, 0.1);
-    color: var(--tertiary-color);
+    background-color: rgba(52, 152, 219, 0.1);
+    color: var(--text-color);
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 14px;
+    font-weight: 600;
     transition: all 0.3s ease;
 }
 
 .skill:hover {
-    background-color: var(--tertiary-color);
+    background-color: var(--primary-color);
     color: white;
     transform: scale(1.05);
 }
@@ -116,6 +118,7 @@ h2 {
 
 .experience-item h4 {
     font-size: 20px;
+    font-weight: 700;
     margin-bottom: 5px;
     color: var(--secondary-color);
 }
@@ -123,6 +126,7 @@ h2 {
 .experience-item p {
     color: var(--text-light);
     margin-bottom: 10px;
+    font-weight: 500;
 }
 
 .projects {
@@ -132,7 +136,7 @@ h2 {
 }
 
 .project {
-    background-color: rgba(255, 107, 107, 0.05);
+    background-color: rgba(46, 204, 113, 0.05);
     border-radius: 15px;
     padding: 20px;
     transition: all 0.3s ease;
@@ -140,25 +144,27 @@ h2 {
 
 .project:hover {
     transform: translateY(-5px) scale(1.03);
-    box-shadow: 0 10px 20px rgba(255, 107, 107, 0.2);
+    box-shadow: 0 10px 20px rgba(46, 204, 113, 0.2);
 }
 
 .project h4 {
     font-size: 18px;
+    font-weight: 700;
     margin-bottom: 10px;
-    color: var(--primary-color);
+    color: var(--tertiary-color);
 }
 
 .project p {
     font-size: 14px;
-    color: var(--text-light);
+    color: var(--text-color);
     margin-bottom: 10px;
+    font-weight: 500;
 }
 
 .project a {
     color: var(--quaternary-color);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     transition: all 0.3s ease;
 }
 
@@ -177,7 +183,7 @@ h2 {
     color: var(--primary-color);
     text-decoration: none;
     transition: all 0.3s ease;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .contact a:hover {
@@ -187,6 +193,10 @@ h2 {
 
 ul {
     margin-left: 20px;
+}
+
+li {
+    font-weight: 500;
 }
 
 @media (max-width: 768px) {
