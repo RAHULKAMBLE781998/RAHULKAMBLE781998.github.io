@@ -1,11 +1,24 @@
 :root {
-    --primary-color: #007AFF;
-    --secondary-color: #5AC8FA;
-    --background-color: #F5F5F7;
+    --primary-color: #FF6B6B;
+    --secondary-color: #4ECDC4;
+    --tertiary-color: #45B7D1;
+    --quaternary-color: #FFA07A;
+    --background-color: #F7F7F7;
     --section-background: #FFFFFF;
-    --text-color: #1D1D1F;
-    --text-light: #86868B;
-    --hover-color: #0056b3;
+    --text-color: #333333;
+    --text-light: #777777;
+    --hover-color: #FF8E8E;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 * {
@@ -25,6 +38,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 40px 20px;
+    animation: fadeIn 1s ease-out;
 }
 
 header {
@@ -36,9 +50,11 @@ h1 {
     font-size: 48px;
     font-weight: 700;
     margin-bottom: 10px;
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--tertiary-color), var(--quaternary-color));
+    background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: rainbow 5s ease infinite;
 }
 
 h2 {
@@ -54,11 +70,12 @@ h2 {
     margin-bottom: 40px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 1s ease-out;
 }
 
 .section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .section h3 {
@@ -74,26 +91,33 @@ h2 {
 }
 
 .skill {
-    background-color: rgba(90, 200, 250, 0.1);
-    color: var(--primary-color);
+    background-color: rgba(78, 205, 196, 0.1);
+    color: var(--tertiary-color);
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 14px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .skill:hover {
-    background-color: rgba(90, 200, 250, 0.2);
+    background-color: var(--tertiary-color);
+    color: white;
+    transform: scale(1.05);
 }
 
 .experience-item {
     margin-bottom: 30px;
+    transition: transform 0.3s ease;
+}
+
+.experience-item:hover {
+    transform: translateX(10px);
 }
 
 .experience-item h4 {
     font-size: 20px;
     margin-bottom: 5px;
-    color: var(--primary-color);
+    color: var(--secondary-color);
 }
 
 .experience-item p {
@@ -108,15 +132,15 @@ h2 {
 }
 
 .project {
-    background-color: rgba(90, 200, 250, 0.05);
+    background-color: rgba(255, 107, 107, 0.05);
     border-radius: 15px;
     padding: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .project:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 10px 20px rgba(255, 107, 107, 0.2);
 }
 
 .project h4 {
@@ -132,14 +156,15 @@ h2 {
 }
 
 .project a {
-    color: var(--primary-color);
+    color: var(--quaternary-color);
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .project a:hover {
     color: var(--hover-color);
+    text-decoration: underline;
 }
 
 .contact {
@@ -151,12 +176,13 @@ h2 {
     margin: 0 10px;
     color: var(--primary-color);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
     font-weight: 500;
 }
 
 .contact a:hover {
     color: var(--hover-color);
+    transform: scale(1.1);
 }
 
 ul {
