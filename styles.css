@@ -659,6 +659,94 @@ img { display: block; max-width: 100%; }
 .project-cta { text-align: center; padding-top: 12px; }
 
 /* ============================================================
+   Other Products
+   ============================================================ */
+.other-projects { padding: 40px 0 100px; }
+.op-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+.op-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    transition: border-color .3s, transform .3s, box-shadow .3s;
+    display: flex;
+    flex-direction: column;
+}
+.op-card:hover {
+    border-color: var(--border-h);
+    transform: translateY(-6px);
+    box-shadow: 0 24px 52px rgba(99,102,241,.12);
+}
+.op-img-wrap {
+    background: #0a0a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+    height: 320px;
+}
+.op-img-wrap img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+.op-body { padding: 26px 28px 30px; }
+.op-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+.op-top-row h3 { font-size: 19px; font-weight: 700; color: var(--text); }
+.op-status {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    padding: 4px 11px;
+    border-radius: 100px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.op-status-live {
+    background: rgba(16,185,129,.1);
+    border: 1px solid rgba(16,185,129,.3);
+    color: var(--green);
+}
+.op-status-paused {
+    background: rgba(148,163,184,.1);
+    border: 1px solid rgba(148,163,184,.28);
+    color: var(--muted);
+}
+.op-body p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 18px;
+}
+.op-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.op-tags span {
+    background: rgba(255,255,255,.04);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 11.5px;
+    font-weight: 500;
+    font-family: var(--mono);
+}
+
+/* ============================================================
    Experience Timeline
    ============================================================ */
 .exp-section { padding: 100px 0; }
@@ -904,6 +992,7 @@ img { display: block; max-width: 100%; }
     .what-grid     { grid-template-columns: repeat(2, 1fr); }
     .highlights-grid { grid-template-columns: repeat(2, 1fr); }
     .skills-grid   { grid-template-columns: repeat(2, 1fr); }
+    .op-grid       { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
@@ -917,6 +1006,7 @@ img { display: block; max-width: 100%; }
     .tl-card         { padding: 22px 24px; }
     .slide-cap       { font-size: 12px; padding: 32px 16px 14px; }
     .tech-row        { flex-direction: column; align-items: flex-start; }
+    .op-img-wrap     { height: 260px; }
 }
 
 @media (max-width: 640px) {

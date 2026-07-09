@@ -76,7 +76,7 @@
                     <div class="stat-lbl">Production Technologies</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-num"><span class="counter" data-target="1">0</span><span class="stat-unit"> SaaS</span></div>
+                    <div class="stat-num"><span class="counter" data-target="3">0</span><span class="stat-unit"> Products</span></div>
                     <div class="stat-lbl">Shipped Solo, End-to-End</div>
                 </div>
             </div>
@@ -231,6 +231,49 @@
         </div>
     </section>
 
+    <!-- OTHER PRODUCTS -->
+    <section class="other-projects reveal" id="other-projects">
+        <div class="container">
+            <div class="section-head">
+                <div class="badge">More Shipped Work</div>
+                <h2 class="section-title">Two more products, built solo.</h2>
+                <p class="section-sub">Same pattern as AuditReady — sole architect, every layer, idea to production.</p>
+            </div>
+            <div class="op-grid">
+                <div class="op-card">
+                    <div class="op-img-wrap">
+                        <img src="./landing/projects/bill-guard.png" alt="Bill Guard AI app" loading="lazy">
+                    </div>
+                    <div class="op-body">
+                        <div class="op-top-row">
+                            <h3>Bill Guard AI</h3>
+                            <span class="op-status op-status-live">Live</span>
+                        </div>
+                        <p>AI that audits Indian hospital bills for hidden overcharges — grounded in 28,884+ CGHS rate entries, PMJAY, NPPA drug prices, and NCDRC precedents, with citations, in under 60 seconds. Voice consultation via LiveKit + Claude + ElevenLabs.</p>
+                        <div class="op-tags">
+                            <span>React Native</span><span>NestJS</span><span>PostgreSQL + pgvector</span><span>RAG</span><span>LiveKit</span><span>GCP Cloud Run</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="op-card">
+                    <div class="op-img-wrap">
+                        <img src="./landing/projects/visa-coach.png" alt="AI Visa Interview Coach app" loading="lazy">
+                    </div>
+                    <div class="op-body">
+                        <div class="op-top-row">
+                            <h3>VisaCoach</h3>
+                            <span class="op-status op-status-paused">Published · Paused</span>
+                        </div>
+                        <p>AI-powered F1 visa interview simulator — extracts your profile from a DS-160 upload, generates real consulate-style questions, and runs real-time voice mock interviews with 7-dimension scorecards. Published on Google Play, 80+ organic users.</p>
+                        <div class="op-tags">
+                            <span>React Native</span><span>NestJS</span><span>LiveKit Voice</span><span>Claude LLM</span><span>RAG</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- EXPERIENCE -->
     <section class="exp-section reveal" id="experience">
         <div class="container">
@@ -242,7 +285,26 @@
                 <div class="tl-item">
                     <div class="tl-dot"></div>
                     <div class="tl-card">
-                        <div class="tl-period">Dec 2022 — Present</div>
+                        <div class="tl-period">Jan 2025 — Present</div>
+                        <h3 class="tl-role">Cloud Engineer — Public CloudOps</h3>
+                        <div class="tl-company">E2Open (a WiseTech Global company)</div>
+                        <ul class="tl-points">
+                            <li>Shipped the team's first production agentic AI triage system — AWS Lambda + Amazon Bedrock (Claude) + EventBridge — ingesting 500+ daily monitoring alerts and posting resolution recommendations directly into Jira</li>
+                            <li>Built a second autonomous agent that auto-closes resolved-alert backlog, drawing down a 1,700+ ticket queue with zero mis-transitions</li>
+                            <li>Led a fleet-wide migration of 181 RDS instances across 5 AWS accounts via a module-first Terraform cascade</li>
+                            <li>Built a custom MCP server for vulnerability-dashboard queries, wired into Claude Code to accelerate ticket triage and CVE remediation</li>
+                            <li>Owns infrastructure-as-code across 11+ AWS accounts in 3 regions; authored and merged ~50 Terraform PRs</li>
+                        </ul>
+                        <div class="tl-tags">
+                            <span>AWS Lambda</span><span>Amazon Bedrock</span><span>EventBridge</span><span>Terraform</span>
+                            <span>RDS/Aurora</span><span>MCP</span><span>Claude</span><span>IAM / KMS</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-card">
+                        <div class="tl-period">Dec 2022 — Jan 2025</div>
                         <h3 class="tl-role">Backend Developer</h3>
                         <div class="tl-company">DAZN — Global Sports Streaming Platform</div>
                         <ul class="tl-points">
@@ -362,6 +424,9 @@
                     </a>
                     <a href="https://github.com/RAHULKAMBLE781998" target="_blank" class="contact-link">
                         <span class="ci">⌥</span> GitHub
+                    </a>
+                    <a href="https://youtube.com/@HustleWithRahul98" target="_blank" class="contact-link">
+                        <span class="ci">▶</span> YouTube
                     </a>
                 </div>
                 <a href="mailto:rahulkambleofficial@gmail.com" class="btn btn-primary btn-lg">Start a Conversation →</a>
