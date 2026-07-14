@@ -4,111 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rahul Kamble — AI Software Engineer</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%237a5af8'/%3E%3Ctext x='16' y='22' font-family='Arial,sans-serif' font-size='14' font-weight='bold' fill='white' text-anchor='middle'%3ERK%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Fixed Background Effects -->
-    <div class="bg-layer">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-        <div class="grid-bg"></div>
-    </div>
-
     <!-- NAV -->
     <nav class="nav" id="nav">
         <div class="nav-inner">
-            <div class="nav-logo">RK</div>
+            <a href="#hero" class="wordmark">
+                <span>Rahul</span>
+                <span>Kamble <sup>™</sup></span>
+            </a>
             <div class="nav-links">
                 <a href="#projects">Projects</a>
+                <a href="#ai-agents">AI Agents</a>
                 <a href="#experience">Experience</a>
                 <a href="#skills">Skills</a>
-                <a href="#contact" class="nav-cta">Hire Me</a>
+                <a href="#contact" class="nav-cta">Let's Talk</a>
             </div>
         </div>
     </nav>
 
     <!-- HERO -->
-    <section class="hero" id="hero">
-        <div class="hero-content">
+    <header class="hero" id="hero">
+        <div class="hero-left">
             <div class="avail-badge">
                 <span class="pulse-dot"></span>
-                Available for Projects
+                Available for projects
             </div>
             <h1 class="hero-title">
-                <span class="hero-name">Rahul Kamble</span>
+                <span class="line"><span>Software</span></span>
+                <span class="line"><span>for founders</span></span>
+                <span class="line"><span>ready to</span></span>
+                <span class="line"><span><em>ship</em></span></span>
             </h1>
-            <div class="hero-tagline">
-                <span class="typewriter-text" id="typewriter"></span><span class="cursor-blink">|</span>
-            </div>
             <p class="hero-desc">
-                I build production-grade web applications — secured, cloud-deployed, and ready for real users.
-                <strong>From your idea to a working MVP in 15 days.</strong>
+                I'm Rahul Kamble — AI software engineer. I take your idea to a secured,
+                cloud-deployed MVP in 15 days, solo: backend, frontend, infra, auth, all of it.
             </p>
-            <div class="hero-btns">
-                <a href="#contact" class="btn btn-primary">Let's Build Together →</a>
-                <a href="https://auditreadyglobal.uk" target="_blank" class="btn btn-ghost">See Live Product ↗</a>
-            </div>
-        </div>
-        <div class="scroll-down">
-            <div class="scroll-arrow"></div>
-        </div>
-    </section>
 
-    <!-- STATS -->
-    <section class="stats-bar">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-num"><span class="counter" data-target="15">0</span><span class="stat-unit"> days</span></div>
-                    <div class="stat-lbl">Idea to Production</div>
+            <div class="proof-block">
+                <div class="proof-label">Proof of work</div>
+                <div class="proof-grid">
+                    <div class="proof-item">
+                        <div class="proof-num">15<span>days</span></div>
+                        <div class="proof-name">Idea to production</div>
+                        <div class="proof-sub">AuditReady, shipped solo</div>
+                    </div>
+                    <div class="proof-item">
+                        <div class="proof-num">3<span>×</span></div>
+                        <div class="proof-name">Products shipped</div>
+                        <div class="proof-sub">End-to-end, every layer</div>
+                    </div>
+                    <div class="proof-item">
+                        <div class="proof-num">4<span>+ yrs</span></div>
+                        <div class="proof-name">Professional engineering</div>
+                        <div class="proof-sub">DAZN · E2open (WiseTech)</div>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-num"><span class="counter" data-target="4">0</span><span class="stat-unit">+ yrs</span></div>
-                    <div class="stat-lbl">Professional Engineering</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-num"><span class="counter" data-target="15">0</span><span class="stat-unit">+</span></div>
-                    <div class="stat-lbl">Production Technologies</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-num"><span class="counter" data-target="3">0</span><span class="stat-unit"> Products</span></div>
-                    <div class="stat-lbl">Shipped Solo, End-to-End</div>
-                </div>
+            </div>
+
+            <div class="hero-links">
+                <a href="#projects" class="tlink">View Projects</a>
+                <span class="tlink-sep">or</span>
+                <a href="#ai-agents" class="tlink">Explore AI Agents</a>
+                <span class="tlink-arrow">↳</span>
             </div>
         </div>
-    </section>
 
-    <!-- WHAT I BUILD -->
-    <section class="what-section reveal" id="capabilities">
+        <div class="hero-bento" aria-hidden="true">
+            <div class="bento-cell bento-a"><img src="./landing/dashboard-page.png" alt="" loading="eager"></div>
+            <div class="bento-cell bento-b"><img src="./landing/projects/bill-guard.png" alt="" loading="lazy"></div>
+            <div class="bento-cell bento-c"><img src="./landing/projects/visa-coach.png" alt="" loading="lazy"></div>
+            <div class="bento-cell bento-d"><img src="./landing/ai-review.png" alt="" loading="lazy"></div>
+        </div>
+    </header>
+
+    <!-- SERVICES -->
+    <section class="section reveal" id="capabilities">
         <div class="container">
-            <div class="section-head">
-                <div class="badge">What I Build For You</div>
-                <h2 class="section-title">Full-stack delivery.<br>Zero hand-holding.</h2>
-                <p class="section-sub">From a sketch to a live, scalable product — I handle everything: system design, backend APIs, frontend UI, cloud infra, auth, and security.</p>
-            </div>
-            <div class="what-grid">
-                <div class="what-card">
-                    <div class="what-icon">⚡</div>
+            <div class="eyebrow">Services</div>
+            <h2 class="section-title">Full-stack delivery.<br>Zero hand-holding.</h2>
+            <div class="service-rows">
+                <div class="service-row">
                     <h3>Web Applications</h3>
                     <p>Full-stack React + NestJS apps with auth, roles, real-time features, and clean UX. Deployed to production from day one.</p>
                 </div>
-                <div class="what-card">
-                    <div class="what-icon">🤖</div>
+                <div class="service-row">
                     <h3>AI-Powered Tools</h3>
                     <p>Integrate LLMs, embeddings, and AI workflows. Build smart features — document analysis, search, automation — that actually work in production.</p>
                 </div>
-                <div class="what-card">
-                    <div class="what-icon">☁️</div>
+                <div class="service-row">
                     <h3>Cloud Infrastructure</h3>
                     <p>Auto-scaling serverless APIs on AWS or GCP, Terraform-managed infra, CI/CD pipelines, monitoring, and zero-downtime deploys.</p>
                 </div>
-                <div class="what-card">
-                    <div class="what-icon">🔐</div>
+                <div class="service-row">
                     <h3>Enterprise Security</h3>
                     <p>JWT + 2FA auth, RBAC, rate limiting, immutable audit logs, encrypted storage — the full security stack baked in from day one.</p>
                 </div>
@@ -117,43 +111,24 @@
     </section>
 
     <!-- AUDITREADY FEATURED PROJECT -->
-    <section class="project-section reveal" id="projects">
-        <div class="project-section-glow"></div>
+    <section class="section reveal" id="projects">
         <div class="container">
-            <div class="section-head">
-                <div class="badge badge-purple">Featured Project · Shipped Solo in 15 Days</div>
-                <h2 class="section-title">AuditReady</h2>
-                <p class="section-sub">
-                    A production-grade SaaS platform for automotive suppliers to manage PPAP (Production Part Approval Process) lifecycles — document management, OEM customer review portal, and approval workflows. Idea to live product, solo.
-                </p>
-            </div>
+            <div class="eyebrow">Featured project — shipped solo in 15 days</div>
+            <h2 class="section-title">AuditReady</h2>
+            <p class="section-sub">
+                A production-grade SaaS platform for automotive suppliers to manage PPAP
+                (Production Part Approval Process) lifecycles — document management, OEM customer
+                review portal, and approval workflows. Idea to live product, solo.
+            </p>
 
             <!-- Feature Highlights -->
             <div class="highlights-grid">
-                <div class="highlight-item">
-                    <span class="hi-check">✓</span>
-                    <span>18 PPAP elements with file versioning & history</span>
-                </div>
-                <div class="highlight-item">
-                    <span class="hi-check">✓</span>
-                    <span>Secure OEM review portal — no customer login needed</span>
-                </div>
-                <div class="highlight-item">
-                    <span class="hi-check">✓</span>
-                    <span>JWT RS256 + 2FA TOTP + OAuth (Google, Apple, Facebook)</span>
-                </div>
-                <div class="highlight-item">
-                    <span class="hi-check">✓</span>
-                    <span>Multi-tenant, company-scoped at the database level</span>
-                </div>
-                <div class="highlight-item">
-                    <span class="hi-check">✓</span>
-                    <span>Grafana + Prometheus monitoring in production</span>
-                </div>
-                <div class="highlight-item">
-                    <span class="hi-check">✓</span>
-                    <span>Terraform IaC — zero click-ops in production infra</span>
-                </div>
+                <div class="highlight-item">18 PPAP elements with file versioning &amp; history</div>
+                <div class="highlight-item">Secure OEM review portal — no customer login needed</div>
+                <div class="highlight-item">JWT RS256 + 2FA TOTP + OAuth (Google, Apple, Facebook)</div>
+                <div class="highlight-item">Multi-tenant, company-scoped at the database level</div>
+                <div class="highlight-item">Grafana + Prometheus monitoring in production</div>
+                <div class="highlight-item">Terraform IaC — zero click-ops in production infra</div>
             </div>
 
             <!-- Screenshot Slider -->
@@ -161,15 +136,12 @@
                 <div class="browser-frame">
                     <div class="browser-topbar">
                         <div class="browser-circles">
-                            <span class="bc-red"></span>
-                            <span class="bc-yellow"></span>
-                            <span class="bc-green"></span>
+                            <span></span><span></span><span></span>
                         </div>
                         <div class="browser-url-bar">auditreadyglobal.uk</div>
                         <div class="browser-actions"></div>
                     </div>
                     <div class="slide-viewport">
-                        <!-- Slides injected here by JS, defined below -->
                         <div class="slide active" data-slide="0">
                             <img src="./audaitready-home-page.png" alt="AuditReady Landing Page" loading="lazy">
                             <div class="slide-cap">Landing Page — Purpose-built for automotive suppliers</div>
@@ -225,20 +197,18 @@
                 </div>
             </div>
 
-            <div class="project-cta">
-                <a href="https://auditreadyglobal.uk" target="_blank" class="btn btn-primary btn-lg">Visit AuditReady ↗</a>
+            <div class="section-cta">
+                <a href="https://auditreadyglobal.uk" target="_blank" class="btn-pill">Visit AuditReady ↗</a>
             </div>
         </div>
     </section>
 
     <!-- OTHER PRODUCTS -->
-    <section class="other-projects reveal" id="other-projects">
+    <section class="section reveal" id="other-projects">
         <div class="container">
-            <div class="section-head">
-                <div class="badge">More Shipped Work</div>
-                <h2 class="section-title">Two more products, built solo.</h2>
-                <p class="section-sub">Same pattern as AuditReady — sole architect, every layer, idea to production.</p>
-            </div>
+            <div class="eyebrow">More shipped work</div>
+            <h2 class="section-title">Two more products,<br>built solo.</h2>
+            <p class="section-sub">Same pattern as AuditReady — sole architect, every layer, idea to production.</p>
             <div class="op-grid">
                 <div class="op-card">
                     <div class="op-img-wrap">
@@ -250,7 +220,7 @@
                             <span class="op-status op-status-live">Live</span>
                         </div>
                         <p>AI that audits Indian hospital bills for hidden overcharges — grounded in 28,884+ CGHS rate entries, PMJAY, NPPA drug prices, and NCDRC precedents, with citations, in under 60 seconds. Voice consultation via LiveKit + Claude + ElevenLabs.</p>
-                        <div class="op-tags">
+                        <div class="tag-pills">
                             <span>React Native</span><span>NestJS</span><span>PostgreSQL + pgvector</span><span>RAG</span><span>LiveKit</span><span>GCP Cloud Run</span>
                         </div>
                     </div>
@@ -265,7 +235,7 @@
                             <span class="op-status op-status-paused">Published · Paused</span>
                         </div>
                         <p>AI-powered F1 visa interview simulator — extracts your profile from a DS-160 upload, generates real consulate-style questions, and runs real-time voice mock interviews with 7-dimension scorecards. Published on Google Play, 80+ organic users.</p>
-                        <div class="op-tags">
+                        <div class="tag-pills">
                             <span>React Native</span><span>NestJS</span><span>LiveKit Voice</span><span>Claude LLM</span><span>RAG</span>
                         </div>
                     </div>
@@ -274,79 +244,293 @@
         </div>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section class="exp-section reveal" id="experience">
+    <!-- AI AGENTS MENU -->
+    <section class="section reveal" id="ai-agents">
         <div class="container">
-            <div class="section-head">
-                <div class="badge">Career</div>
-                <h2 class="section-title">Work Experience</h2>
+            <div class="eyebrow">Also available</div>
+            <h2 class="section-title">AI agents,<br>built to order.</h2>
+            <p class="section-sub">Voice, chat, and back-office agents on one reusable core — LLM orchestration, RAG, and (where it fits) LiveKit voice. Reskinned to your data and shipped fast.</p>
+
+            <div class="tier-legend">
+                <span class="tier-pill"><span class="tier-mark tier-mark-now">Ready now</span> live demo today</span>
+                <span class="tier-pill"><span class="tier-mark tier-mark-wk">1–2 wk</span> your data, our core</span>
+                <span class="tier-pill"><span class="tier-mark tier-mark-custom">Custom</span> bespoke build</span>
             </div>
-            <div class="timeline">
-                <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-card">
-                        <div class="tl-period">Jan 2025 — Present</div>
-                        <h3 class="tl-role">Cloud Engineer — Public CloudOps</h3>
-                        <div class="tl-company">E2Open (a WiseTech Global company)</div>
-                        <ul class="tl-points">
+
+            <div class="agents-cat-grid">
+                <div class="agents-category">
+                    <h3 class="agents-cat-title">Voice Agents</h3>
+                    <div class="agent-rows">
+                        <div class="agent-row">
+                            <span class="tier-mark tier-mark-now">Ready now</span>
+                            <div class="agent-copy">
+                                <div class="agent-name">AI Receptionist / Front Desk</div>
+                                <p>Catches the calls a busy front desk misses — clinics, law firms, home services, salons, real estate.</p>
+                            </div>
+                        </div>
+                        <div class="agent-row">
+                            <span class="tier-mark tier-mark-now">Ready now</span>
+                            <div class="agent-copy">
+                                <div class="agent-name">Appointment Booking + Reminder Agent</div>
+                                <p>Books, confirms, and reschedules; automated reminder calls cut no-shows significantly.</p>
+                            </div>
+                        </div>
+                        <div class="agent-row">
+                            <span class="tier-mark tier-mark-wk">1–2 wk</span>
+                            <div class="agent-copy">
+                                <div class="agent-name">Speed-to-Lead Callback Agent</div>
+                                <p>Calls inbound leads within seconds of a form submit. Real estate, solar, coaching, insurance.</p>
+                            </div>
+                        </div>
+                        <div class="agent-row">
+                            <span class="tier-mark tier-mark-wk">1–2 wk</span>
+                            <div class="agent-copy">
+                                <div class="agent-name">Outbound Payment Reminder Agent</div>
+                                <p>Polite, automated invoice follow-up calls at a fraction of the cost of a human caller.</p>
+                            </div>
+                        </div>
+                        <div class="agent-row">
+                            <span class="tier-mark tier-mark-wk">1–2 wk</span>
+                            <div class="agent-copy">
+                                <div class="agent-name">Restaurant Reservation &amp; Order Agent</div>
+                                <p>Handles bookings, FAQs, and pickup calls when staff can't get to the phone.</p>
+                            </div>
+                        </div>
+                        <div class="agent-row">
+                            <span class="tier-mark tier-mark-wk">1–2 wk</span>
+                            <div class="agent-copy">
+                                <div class="agent-name">Recruiting Screener</div>
+                                <p>Pre-screens candidates at scale over a natural voice conversation.</p>
+                            </div>
+                        </div>
+                        <div class="agent-row">
+                            <span class="tier-mark tier-mark-wk">1–2 wk</span>
+                            <div class="agent-copy">
+                                <div class="agent-name">Post-Service Feedback Caller</div>
+                                <p>Calls clients after a job to catch issues before they become a bad review.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="agents-category">
+                    <h3 class="agents-cat-title">Chat / Support Agents</h3>
+                    <div class="agent-rows">
+                        <div class="agent-row">
+                            <span class="tier-mark tier-mark-now">Ready now</span>
+                            <div class="agent-copy">
+                                <div class="agent-name">RAG Support Agent</div>
+                                <p>Answers from your own docs with citations — resolves tickets for a fraction of the cost of a human agent.</p>
+                            </div>
+                        </div>
+                        <div class="agent-row">
+                            <span class="tier-mark tier-mark-wk">1–2 wk</span>
+                            <div class="agent-copy">
+                                <div class="agent-name">E-commerce Order Agent</div>
+                                <p>Order status, returns, and product recommendations via chat.</p>
+                            </div>
+                        </div>
+                        <div class="agent-row">
+                            <span class="tier-mark tier-mark-wk">1–2 wk</span>
+                            <div class="agent-copy">
+                                <div class="agent-name">Lead Qualification Chatbot</div>
+                                <p>Qualifies website visitors, scores them, books meetings, updates your CRM.</p>
+                            </div>
+                        </div>
+                        <div class="agent-row">
+                            <span class="tier-mark tier-mark-wk">1–2 wk</span>
+                            <div class="agent-copy">
+                                <div class="agent-name">Website-to-WhatsApp Agent</div>
+                                <p>Support and booking over WhatsApp — the default channel for a lot of customers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="agents-category">
+                    <h3 class="agents-cat-title">Document &amp; Back-Office</h3>
+                    <div class="agent-rows">
+                        <div class="agent-row">
+                            <span class="tier-mark tier-mark-custom">Custom</span>
+                            <div class="agent-copy">
+                                <div class="agent-name">Document Processing Agent</div>
+                                <p>Reads forms, PDFs, and scans; extracts, validates, and decides — with a full audit trail. Legal intake, insurance, loans, KYC.</p>
+                            </div>
+                        </div>
+                        <div class="agent-row">
+                            <span class="tier-mark tier-mark-custom">Custom</span>
+                            <div class="agent-copy">
+                                <div class="agent-name">Invoice / PO Reconciliation Agent</div>
+                                <p>Matches invoices to purchase orders and flags mismatches automatically.</p>
+                            </div>
+                        </div>
+                        <div class="agent-row">
+                            <span class="tier-mark tier-mark-custom">Custom</span>
+                            <div class="agent-copy">
+                                <div class="agent-name">Compliance &amp; Audit Agent</div>
+                                <p>Automated monitoring, reporting, and audit trails for rule-following work where consistency is everything.</p>
+                            </div>
+                        </div>
+                        <div class="agent-row">
+                            <span class="tier-mark tier-mark-custom">Custom</span>
+                            <div class="agent-copy">
+                                <div class="agent-name">Contract Review / Legal Intake Agent</div>
+                                <p>Screens incoming inquiries and routes the high-value cases to a human.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="agents-category">
+                    <h3 class="agents-cat-title">Sales &amp; Ops Agents</h3>
+                    <div class="agent-rows">
+                        <div class="agent-row">
+                            <span class="tier-mark tier-mark-now">Ready now</span>
+                            <div class="agent-copy">
+                                <div class="agent-name">Internal Knowledge Assistant</div>
+                                <p>A Slack/Teams bot over your company wiki and policies — kills the "ask the one person who knows" bottleneck.</p>
+                            </div>
+                        </div>
+                        <div class="agent-row">
+                            <span class="tier-mark tier-mark-wk">1–2 wk</span>
+                            <div class="agent-copy">
+                                <div class="agent-name">CRM Autopilot</div>
+                                <p>Logs calls, updates deal stages, and creates follow-up tasks from meeting outcomes and email threads.</p>
+                            </div>
+                        </div>
+                        <div class="agent-row">
+                            <span class="tier-mark tier-mark-wk">1–2 wk</span>
+                            <div class="agent-copy">
+                                <div class="agent-name">Email Triage Agent</div>
+                                <p>Categorizes inbound email, drafts replies, and routes to the right person.</p>
+                            </div>
+                        </div>
+                        <div class="agent-row">
+                            <span class="tier-mark tier-mark-wk">1–2 wk</span>
+                            <div class="agent-copy">
+                                <div class="agent-name">Lead Enrichment Agent</div>
+                                <p>Auto-gathers company data, profiles, and buying signals for every inbound lead.</p>
+                            </div>
+                        </div>
+                        <div class="agent-row">
+                            <span class="tier-mark tier-mark-wk">1–2 wk</span>
+                            <div class="agent-copy">
+                                <div class="agent-name">Report Generation Agent</div>
+                                <p>Turns raw data across your tools into a weekly business summary — no analyst required.</p>
+                            </div>
+                        </div>
+                        <div class="agent-row">
+                            <span class="tier-mark tier-mark-wk">1–2 wk</span>
+                            <div class="agent-copy">
+                                <div class="agent-name">Market / Competitor Research Agent</div>
+                                <p>Monitors competitors and trends, compiles a stakeholder-ready brief on a schedule.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pitch Stats -->
+            <div class="stat-strip">
+                <div class="stat-cell">
+                    <div class="stat-num">$450</div>
+                    <div class="stat-name">Avg. cost of a missed call</div>
+                </div>
+                <div class="stat-cell">
+                    <div class="stat-num">93%</div>
+                    <div class="stat-name">Callers who never call back after voicemail</div>
+                </div>
+                <div class="stat-cell">
+                    <div class="stat-num">$0.46</div>
+                    <div class="stat-name">AI-resolved ticket vs. $4.18 human-handled</div>
+                </div>
+                <div class="stat-cell">
+                    <div class="stat-num">~30%</div>
+                    <div class="stat-name">No-show reduction from reminder calls</div>
+                </div>
+            </div>
+
+            <div class="section-cta">
+                <a href="#contact" class="btn-pill">Build My Agent →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section reveal" id="experience">
+        <div class="container">
+            <div class="eyebrow">Career</div>
+            <h2 class="section-title">Work Experience</h2>
+            <div class="xp-list">
+                <div class="xp-item">
+                    <div class="xp-meta">
+                        <div class="xp-period">Jan 2025 — Present</div>
+                        <div class="xp-company">E2open<br>(a WiseTech Global company)</div>
+                    </div>
+                    <div class="xp-body">
+                        <h3 class="xp-role">Cloud Engineer — Public CloudOps</h3>
+                        <ul class="xp-points">
                             <li>Shipped the team's first production agentic AI triage system — AWS Lambda + Amazon Bedrock (Claude) + EventBridge — ingesting 500+ daily monitoring alerts and posting resolution recommendations directly into Jira</li>
                             <li>Built a second autonomous agent that auto-closes resolved-alert backlog, drawing down a 1,700+ ticket queue with zero mis-transitions</li>
                             <li>Led a fleet-wide migration of 181 RDS instances across 5 AWS accounts via a module-first Terraform cascade</li>
                             <li>Built a custom MCP server for vulnerability-dashboard queries, wired into Claude Code to accelerate ticket triage and CVE remediation</li>
                             <li>Owns infrastructure-as-code across 11+ AWS accounts in 3 regions; authored and merged ~50 Terraform PRs</li>
                         </ul>
-                        <div class="tl-tags">
+                        <div class="tag-pills">
                             <span>AWS Lambda</span><span>Amazon Bedrock</span><span>EventBridge</span><span>Terraform</span>
                             <span>RDS/Aurora</span><span>MCP</span><span>Claude</span><span>IAM / KMS</span>
                         </div>
                     </div>
                 </div>
-                <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-card">
-                        <div class="tl-period">Dec 2022 — Jan 2025</div>
-                        <h3 class="tl-role">Backend Developer</h3>
-                        <div class="tl-company">DAZN — Global Sports Streaming Platform</div>
-                        <ul class="tl-points">
+                <div class="xp-item">
+                    <div class="xp-meta">
+                        <div class="xp-period">Dec 2022 — Jan 2025</div>
+                        <div class="xp-company">DAZN — Global Sports Streaming Platform</div>
+                    </div>
+                    <div class="xp-body">
+                        <h3 class="xp-role">Backend Developer</h3>
+                        <ul class="xp-points">
                             <li>Built AWS serverless &amp; NestJS microservices from scratch; owned the full service lifecycle</li>
                             <li>Designed event-driven systems at scale using Kafka, SQS, and EventBridge</li>
                             <li>SWAT team member — cross-functional exposure to all backend services across DAZN</li>
                             <li>Created system architecture diagrams and led technical design reviews in Miro</li>
                             <li>Worked with Zuora billing, Okta SSO, HashiCorp Vault for secrets management</li>
                         </ul>
-                        <div class="tl-tags">
+                        <div class="tag-pills">
                             <span>NestJS</span><span>AWS Lambda</span><span>Kafka</span><span>Terraform</span>
                             <span>DynamoDB</span><span>Redis</span><span>Step Functions</span><span>ECS</span>
                         </div>
                     </div>
                 </div>
-                <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-card">
-                        <div class="tl-period">Aug 2021 — Dec 2022</div>
-                        <h3 class="tl-role">Programmer Analyst</h3>
-                        <div class="tl-company">Cognizant</div>
-                        <ul class="tl-points">
+                <div class="xp-item">
+                    <div class="xp-meta">
+                        <div class="xp-period">Aug 2021 — Dec 2022</div>
+                        <div class="xp-company">Cognizant</div>
+                    </div>
+                    <div class="xp-body">
+                        <h3 class="xp-role">Programmer Analyst</h3>
+                        <ul class="xp-points">
                             <li>Built Node.js REST APIs with Express.js and full Swagger documentation</li>
                             <li>Implemented Datadog for session replay and structured log collection</li>
                             <li>Frontend development with React.js and react-leaflet for geospatial features</li>
                         </ul>
-                        <div class="tl-tags">
+                        <div class="tag-pills">
                             <span>Node.js</span><span>React.js</span><span>Datadog</span><span>PostgreSQL</span>
                         </div>
                     </div>
                 </div>
-                <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-card">
-                        <div class="tl-period">Aug 2020 — Jan 2021</div>
-                        <h3 class="tl-role">Team Lead</h3>
-                        <div class="tl-company">SAARK Custom Private Limited</div>
-                        <ul class="tl-points">
+                <div class="xp-item">
+                    <div class="xp-meta">
+                        <div class="xp-period">Aug 2020 — Jan 2021</div>
+                        <div class="xp-company">SAARK Custom Private Limited</div>
+                    </div>
+                    <div class="xp-body">
+                        <h3 class="xp-role">Team Lead</h3>
+                        <ul class="xp-points">
                             <li>Led development of Android app for Emergency Response Kit Beacon Technology</li>
                             <li>Real-time geolocation tracking with Flutter, Firebase, and Google Maps API</li>
                         </ul>
-                        <div class="tl-tags">
+                        <div class="tag-pills">
                             <span>Flutter</span><span>Firebase</span><span>Google Maps API</span>
                         </div>
                     </div>
@@ -356,49 +540,47 @@
     </section>
 
     <!-- SKILLS -->
-    <section class="skills-section reveal" id="skills">
+    <section class="section reveal" id="skills">
         <div class="container">
-            <div class="section-head">
-                <div class="badge">Arsenal</div>
-                <h2 class="section-title">Technical Skills</h2>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-cat">
+            <div class="eyebrow">Stack</div>
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skill-rows">
+                <div class="skill-row">
                     <div class="skill-cat-label">Backend</div>
-                    <div class="skill-tags">
+                    <div class="tag-pills">
                         <span>Node.js</span><span>TypeScript</span><span>NestJS</span>
                         <span>Express.js</span><span>REST APIs</span>
                     </div>
                 </div>
-                <div class="skill-cat">
+                <div class="skill-row">
                     <div class="skill-cat-label">Cloud &amp; Infra</div>
-                    <div class="skill-tags">
+                    <div class="tag-pills">
                         <span>AWS Lambda</span><span>GCP Cloud Run</span><span>Terraform</span>
                         <span>Docker</span><span>GitHub Actions</span><span>Cloudflare</span>
                     </div>
                 </div>
-                <div class="skill-cat">
+                <div class="skill-row">
                     <div class="skill-cat-label">Databases</div>
-                    <div class="skill-tags">
+                    <div class="tag-pills">
                         <span>PostgreSQL</span><span>DynamoDB</span><span>Redis</span><span>TypeORM</span>
                     </div>
                 </div>
-                <div class="skill-cat">
+                <div class="skill-row">
                     <div class="skill-cat-label">Auth &amp; Security</div>
-                    <div class="skill-tags">
+                    <div class="tag-pills">
                         <span>JWT RS256</span><span>OAuth 2.0</span><span>2FA TOTP</span>
                         <span>RBAC</span><span>Okta / SSO</span>
                     </div>
                 </div>
-                <div class="skill-cat">
+                <div class="skill-row">
                     <div class="skill-cat-label">Frontend</div>
-                    <div class="skill-tags">
+                    <div class="tag-pills">
                         <span>React 18</span><span>Vite</span><span>Redux Toolkit</span><span>Tailwind CSS</span>
                     </div>
                 </div>
-                <div class="skill-cat">
+                <div class="skill-row">
                     <div class="skill-cat-label">AI &amp; Messaging</div>
-                    <div class="skill-tags">
+                    <div class="tag-pills">
                         <span>LLMs / RAG</span><span>Embeddings</span><span>Kafka</span>
                         <span>SQS / SNS</span><span>EventBridge</span>
                     </div>
@@ -408,91 +590,39 @@
     </section>
 
     <!-- CONTACT -->
-    <section class="contact-section reveal" id="contact">
+    <section class="section contact-section reveal" id="contact">
         <div class="container">
-            <div class="contact-card">
-                <div class="contact-glow"></div>
-                <div class="badge badge-purple">Let's Talk</div>
-                <h2 class="contact-title">Have an idea?<br>Let's build it in 15 days.</h2>
-                <p class="contact-sub">I work with startups and businesses to ship real software fast. No fluff, no estimates that slip — just working product in your users' hands.</p>
-                <div class="contact-links">
-                    <a href="mailto:rahulkambleofficial@gmail.com" class="contact-link">
-                        <span class="ci">✉</span> rahulkambleofficial@gmail.com
-                    </a>
-                    <a href="https://www.linkedin.com/in/rahul-kamble-3b9ba41aa/" target="_blank" class="contact-link">
-                        <span class="ci">in</span> LinkedIn
-                    </a>
-                    <a href="https://github.com/RAHULKAMBLE781998" target="_blank" class="contact-link">
-                        <span class="ci">⌥</span> GitHub
-                    </a>
-                    <a href="https://youtube.com/@HustleWithRahul98" target="_blank" class="contact-link">
-                        <span class="ci">▶</span> YouTube
-                    </a>
-                </div>
-                <a href="mailto:rahulkambleofficial@gmail.com" class="btn btn-primary btn-lg">Start a Conversation →</a>
+            <div class="eyebrow">Contact</div>
+            <h2 class="contact-title">
+                Have an idea?<br>
+                Let's build it in<br>
+                <em>15 days</em>
+            </h2>
+            <p class="section-sub">I work with startups and businesses to ship real software fast. No fluff, no estimates that slip — just working product in your users' hands.</p>
+            <div class="contact-links">
+                <a href="mailto:rahulkambleofficial@gmail.com" class="tlink">rahulkambleofficial@gmail.com</a>
+                <a href="tel:+917020012149" class="tlink">+91 70200 12149</a>
+                <a href="https://www.linkedin.com/in/rahul-kamble-3b9ba41aa/" target="_blank" class="tlink">LinkedIn</a>
+                <a href="https://github.com/RAHULKAMBLE781998" target="_blank" class="tlink">GitHub</a>
+                <a href="https://youtube.com/@HustleWithRahul98" target="_blank" class="tlink">YouTube</a>
             </div>
+            <a href="mailto:rahulkambleofficial@gmail.com" class="btn-pill">Let's Talk →</a>
         </div>
     </section>
 
     <footer class="footer">
-        <div class="container">
-            <p>Built by Rahul Kamble &nbsp;·&nbsp; <a href="https://auditreadyglobal.uk" target="_blank">AuditReady</a></p>
+        <div class="container footer-inner">
+            <span>© 2026 Rahul Kamble</span>
+            <a href="https://auditreadyglobal.uk" target="_blank">AuditReady ↗</a>
         </div>
     </footer>
 
     <script>
-        // ── Typewriter ────────────────────────────────────────────────
-        const phrases = [
-            'AI Software Engineer.',
-            'Full-Stack Developer.',
-            'I ship MVPs in 15 days.',
-            'Backend Architect.',
-            'From Idea to Production.'
-        ];
-        let pi = 0, ci = 0, deleting = false;
-        const tw = document.getElementById('typewriter');
-
-        function type() {
-            const cur = phrases[pi];
-            if (deleting) {
-                tw.textContent = cur.substring(0, ci - 1);
-                ci--;
-            } else {
-                tw.textContent = cur.substring(0, ci + 1);
-                ci++;
-            }
-            let delay = deleting ? 45 : 75;
-            if (!deleting && ci === cur.length) { delay = 2200; deleting = true; }
-            else if (deleting && ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; delay = 500; }
-            setTimeout(type, delay);
-        }
-        type();
-
-        // ── Counter Animation ─────────────────────────────────────────
-        function runCounters() {
-            document.querySelectorAll('.counter').forEach(el => {
-                const target = +el.dataset.target;
-                const dur = 1400;
-                const step = target / (dur / 16);
-                let cur = 0;
-                const tick = setInterval(() => {
-                    cur += step;
-                    if (cur >= target) { el.textContent = target; clearInterval(tick); }
-                    else el.textContent = Math.floor(cur);
-                }, 16);
-            });
-        }
-
         // ── Scroll Reveal ─────────────────────────────────────────────
         const revealObs = new IntersectionObserver(entries => {
             entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); revealObs.unobserve(e.target); } });
         }, { threshold: 0.08 });
         document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-
-        const statsObs = new IntersectionObserver(entries => {
-            entries.forEach(e => { if (e.isIntersecting) { runCounters(); statsObs.unobserve(e.target); } });
-        }, { threshold: 0.4 });
-        statsObs.observe(document.querySelector('.stats-bar'));
 
         // ── Nav scroll ───────────────────────────────────────────────
         const navEl = document.getElementById('nav');
@@ -506,7 +636,6 @@
         let current = 0;
         let autoTimer = null;
 
-        // Build indicators
         slides.forEach((_, i) => {
             const btn = document.createElement('button');
             btn.className = 'ind' + (i === 0 ? ' ind-active' : '');
@@ -533,7 +662,6 @@
         sliderWrap.addEventListener('mouseenter', stopAuto);
         sliderWrap.addEventListener('mouseleave', startAuto);
 
-        // Touch swipe support
         let touchStartX = 0;
         sliderWrap.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
         sliderWrap.addEventListener('touchend', e => {
