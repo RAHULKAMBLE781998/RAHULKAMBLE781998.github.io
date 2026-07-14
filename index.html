@@ -185,6 +185,19 @@
                 <div class="slide-indicators" id="slideIndicators"></div>
             </div>
 
+            <!-- Build Story Video -->
+            <div class="video-block">
+                <div class="video-facade" id="ytFacade" role="button" tabindex="0"
+                     aria-label="Play video: How I built AuditReady solo in one month using Claude CLI">
+                    <img src="https://i.ytimg.com/vi/YfVeJpnwJUw/maxresdefault.jpg"
+                         alt="Video thumbnail: How I built a production PPAP compliance SaaS solo in one month" loading="lazy">
+                    <span class="video-play">
+                        <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+                    </span>
+                    <span class="video-cap">Watch — how I built AuditReady solo, in one month</span>
+                </div>
+            </div>
+
             <!-- Tech Stack -->
             <div class="tech-row">
                 <span class="tech-lbl">Built with</span>
@@ -670,6 +683,25 @@
         }, { passive: true });
 
         startAuto();
+
+        // ── YouTube lite embed ────────────────────────────────────────
+        const facade = document.getElementById('ytFacade');
+        function playVideo() {
+            if (facade.classList.contains('video-playing')) return;
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://www.youtube-nocookie.com/embed/YfVeJpnwJUw?autoplay=1&rel=0';
+            iframe.title = 'How I built AuditReady solo in one month using Claude CLI';
+            iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+            iframe.allowFullscreen = true;
+            facade.replaceChildren(iframe);
+            facade.classList.add('video-playing');
+            facade.removeAttribute('role');
+            facade.removeAttribute('tabindex');
+        }
+        facade.addEventListener('click', playVideo, { once: true });
+        facade.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); playVideo(); }
+        }, { once: true });
     </script>
 </body>
 </html>
