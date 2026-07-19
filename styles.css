@@ -902,6 +902,51 @@ body.menu-open { overflow: hidden; }
 .footer-inner a:hover { color: var(--text); }
 
 /* ============================================================
+   Custom cursor — desktop / fine pointers only
+   ============================================================ */
+.cursor-dot, .cursor-ring { display: none; }
+
+@media (hover: hover) and (pointer: fine) {
+    body.cursor-on, body.cursor-on a, body.cursor-on button { cursor: none; }
+    .cursor-dot, .cursor-ring {
+        display: block;
+        position: fixed;
+        top: 0; left: 0;
+        z-index: 9999;
+        pointer-events: none;
+        border-radius: 50%;
+        mix-blend-mode: difference;
+        opacity: 0;
+        transition: opacity .3s ease;
+    }
+    body.cursor-visible .cursor-dot,
+    body.cursor-visible .cursor-ring { opacity: 1; }
+    .cursor-dot {
+        width: 8px; height: 8px;
+        margin: -4px 0 0 -4px;
+        background: #fff;
+    }
+    .cursor-ring {
+        width: 36px; height: 36px;
+        margin: -18px 0 0 -18px;
+        border: 1.5px solid #fff;
+        transition: opacity .3s ease,
+                    width .25s ease, height .25s ease, margin .25s ease,
+                    background .25s ease;
+    }
+    body.cursor-hover .cursor-ring {
+        width: 56px; height: 56px;
+        margin: -28px 0 0 -28px;
+        background: #fff;
+    }
+    body.cursor-hover .cursor-dot { opacity: 0; }
+    body.cursor-down .cursor-ring {
+        width: 28px; height: 28px;
+        margin: -14px 0 0 -14px;
+    }
+}
+
+/* ============================================================
    Scroll reveal
    ============================================================ */
 .reveal {
@@ -927,6 +972,7 @@ body.menu-open { overflow: hidden; }
     }
     .nav-links a::after { transition: none; }
     .nav-links, .nav-burger span { transition: none; }
+    .cursor-ring { transition: opacity .3s ease; }
 }
 
 /* ============================================================

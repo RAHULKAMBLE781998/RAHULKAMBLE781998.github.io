@@ -725,6 +725,53 @@
         facade.addEventListener('keydown', e => {
             if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); playVideo(); }
         }, { once: true });
+
+        // ── Custom cursor (fine pointers only) ───────────────────────
+        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+            const dot = document.createElement('div');
+            const ring = document.createElement('div');
+            dot.className = 'cursor-dot';
+            ring.className = 'cursor-ring';
+            dot.setAttribute('aria-hidden', 'true');
+            ring.setAttribute('aria-hidden', 'true');
+            document.body.append(dot, ring);
+            document.body.classList.add('cursor-on');
+
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            let mx = 0, my = 0, rx = 0, ry = 0;
+            let seen = false;
+
+            document.addEventListener('mousemove', e => {
+                mx = e.clientX; my = e.clientY;
+                if (!seen) { seen = true; rx = mx; ry = my; document.body.classList.add('cursor-visible'); }
+                dot.style.transform = `translate(${mx}px, ${my}px)`;
+            }, { passive: true });
+
+            document.documentElement.addEventListener('mouseleave', () => {
+                seen = false;
+                document.body.classList.remove('cursor-visible');
+            });
+
+            (function follow() {
+                const k = reduceMotion ? 1 : 0.18;
+                rx += (mx - rx) * k;
+                ry += (my - ry) * k;
+                ring.style.transform = `translate(${rx}px, ${ry}px)`;
+                requestAnimationFrame(follow);
+            })();
+
+            document.addEventListener('mouseover', e => {
+                // Native cursor takes over inside cross-origin iframes (YouTube)
+                if (e.target.closest('iframe')) {
+                    seen = false;
+                    document.body.classList.remove('cursor-visible');
+                    return;
+                }
+                document.body.classList.toggle('cursor-hover', !!e.target.closest('a, button, [role="button"]'));
+            });
+            document.addEventListener('mousedown', () => document.body.classList.add('cursor-down'));
+            document.addEventListener('mouseup', () => document.body.classList.remove('cursor-down'));
+        }
     </script>
 </body>
 </html>
