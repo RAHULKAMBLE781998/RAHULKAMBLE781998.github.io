@@ -152,19 +152,24 @@ a:focus-visible, button:focus-visible {
     text-transform: uppercase;
 }
 .wordmark sup { font-size: 8px; font-weight: 500; }
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+}
 .nav-links {
     display: flex;
     align-items: center;
     gap: 36px;
 }
-.nav-links a:not(.nav-cta) {
+.nav-links a {
     position: relative;
     color: var(--muted);
     font-size: 15px;
     font-weight: 500;
     transition: color .2s;
 }
-.nav-links a:not(.nav-cta)::after {
+.nav-links a::after {
     content: '';
     position: absolute;
     left: 0; bottom: -4px;
@@ -174,8 +179,8 @@ a:focus-visible, button:focus-visible {
     transform-origin: left;
     transition: transform .25s ease;
 }
-.nav-links a:not(.nav-cta):hover { color: var(--text); }
-.nav-links a:not(.nav-cta):hover::after { transform: scaleX(1); }
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { transform: scaleX(1); }
 .nav-cta {
     background: var(--text);
     color: #000;
@@ -186,6 +191,29 @@ a:focus-visible, button:focus-visible {
     transition: background .2s, color .2s;
 }
 .nav-cta:hover { background: var(--accent); color: #fff; }
+.nav-burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    width: 44px;
+    height: 44px;
+    margin: -8px -10px -8px -6px;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+}
+.nav-burger span {
+    width: 22px;
+    height: 2px;
+    background: var(--text);
+    transition: transform .25s ease;
+}
+.nav-open .nav-burger span:first-child { transform: translateY(4px) rotate(45deg); }
+.nav-open .nav-burger span:last-child  { transform: translateY(-4px) rotate(-45deg); }
+body.menu-open { overflow: hidden; }
 
 /* ============================================================
    Hero
@@ -897,7 +925,8 @@ a:focus-visible, button:focus-visible {
         opacity: 1;
         transform: none;
     }
-    .nav-links a:not(.nav-cta)::after { transition: none; }
+    .nav-links a::after { transition: none; }
+    .nav-links, .nav-burger span { transition: none; }
 }
 
 /* ============================================================
@@ -926,8 +955,50 @@ a:focus-visible, button:focus-visible {
 @media (max-width: 768px) {
     .container { padding: 0 24px; }
     .nav-inner { padding: 16px 24px; }
-    .nav-links a:not(.nav-cta) { display: none; }
+    .nav-right { gap: 14px; }
+    .nav-cta { padding: 9px 18px; font-size: 14px; }
+    .nav-burger { display: inline-flex; }
+    .wordmark, .nav-cta, .nav-burger { position: relative; z-index: 2; }
+    /* .nav has backdrop-filter, so it is the containing block for its
+       positioned descendants — absolute + viewport height gives a
+       full-screen overlay since the nav itself is fixed at the top. */
+    .nav-links {
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 100vh;
+        height: 100dvh;
+        z-index: 1;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: rgba(0, 0, 0, 0.96);
+        padding: 96px 24px 40px;
+        overflow-y: auto;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .25s ease, visibility 0s linear .25s;
+    }
+    .nav-open .nav-links {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity .25s ease;
+    }
+    .nav-links a {
+        font-size: 30px;
+        font-weight: 650;
+        letter-spacing: -0.01em;
+        text-transform: uppercase;
+        color: var(--text);
+        padding: 20px 0;
+        border-top: 1px solid var(--line-soft);
+    }
+    .nav-links a:last-child { border-bottom: 1px solid var(--line-soft); }
+    .nav-links a::after { display: none; }
     .hero { padding: 120px 24px 64px; }
+    .hero-title { font-size: clamp(40px, 12vw, 56px); }
+    .section-title { font-size: clamp(34px, 10.5vw, 52px); }
+    .contact-title { font-size: clamp(36px, 11vw, 54px); }
+    .hero-desc, .section-sub { font-size: 16px; margin-bottom: 44px; }
     .proof-grid { grid-template-columns: 1fr; gap: 28px; }
     .service-row, .xp-item, .skill-row { grid-template-columns: 1fr; gap: 14px; }
     .service-row { padding: 28px 0; }
@@ -942,10 +1013,16 @@ a:focus-visible, button:focus-visible {
     .op-img-wrap { height: 260px; }
     .agents-category { padding: 26px 22px; }
     .hero-bento { grid-auto-rows: 160px; gap: 8px; }
+    /* Bigger tap targets: padding grows the hit area, background-clip
+       keeps the visible dash at 20×3px. */
+    .ind { width: 26px; height: 15px; padding: 6px 3px; background-clip: content-box; }
 }
 
 @media (max-width: 640px) {
     .stat-strip { grid-template-columns: 1fr 1fr; }
-    .contact-links { flex-direction: column; }
-    .s-btn { width: 36px; height: 36px; font-size: 20px; }
+    .stat-cell { padding: 24px 20px; }
+    .stat-cell:first-child { padding-left: 0; }
+    .contact-links { flex-direction: column; align-items: flex-start; }
+    .s-btn { width: 40px; height: 40px; font-size: 20px; }
+    .browser-actions { display: none; }
 }

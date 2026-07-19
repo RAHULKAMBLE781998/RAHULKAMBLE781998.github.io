@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rahul Kamble — AI software engineer. Idea to secured, cloud-deployed MVP in 30 days, solo: backend, frontend, infra, and auth.">
+    <meta name="theme-color" content="#000000">
     <title>Rahul Kamble — AI Software Engineer</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%237a5af8'/%3E%3Ctext x='16' y='22' font-family='Arial,sans-serif' font-size='14' font-weight='bold' fill='white' text-anchor='middle'%3ERK%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,12 +21,17 @@
                 <span>Rahul</span>
                 <span>Kamble <sup>™</sup></span>
             </a>
-            <div class="nav-links">
-                <a href="#projects">Projects</a>
-                <a href="#ai-agents">AI Agents</a>
-                <a href="#experience">Experience</a>
-                <a href="#skills">Skills</a>
+            <div class="nav-right">
+                <div class="nav-links" id="navMenu">
+                    <a href="#projects">Projects</a>
+                    <a href="#ai-agents">AI Agents</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#skills">Skills</a>
+                </div>
                 <a href="#contact" class="nav-cta">Let's Talk</a>
+                <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+                    <span></span><span></span>
+                </button>
             </div>
         </div>
     </nav>
@@ -643,6 +650,22 @@
             navEl.classList.toggle('nav-scrolled', window.scrollY > 60);
         }, { passive: true });
 
+        // ── Mobile menu ──────────────────────────────────────────────
+        const burgerEl = document.getElementById('navBurger');
+        function setMenu(open) {
+            navEl.classList.toggle('nav-open', open);
+            document.body.classList.toggle('menu-open', open);
+            burgerEl.setAttribute('aria-expanded', String(open));
+            burgerEl.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        }
+        burgerEl.addEventListener('click', () => setMenu(!navEl.classList.contains('nav-open')));
+        navEl.addEventListener('click', e => {
+            if (e.target.closest('a')) setMenu(false);
+        });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && navEl.classList.contains('nav-open')) setMenu(false);
+        });
+
         // ── Screenshot Slider ─────────────────────────────────────────
         const slides = Array.from(document.querySelectorAll('.slide'));
         const indicatorsEl = document.getElementById('slideIndicators');
@@ -668,7 +691,7 @@
         document.getElementById('slidePrev').addEventListener('click', () => { stopAuto(); goTo(current - 1); startAuto(); });
         document.getElementById('slideNext').addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto(); });
 
-        function startAuto() { autoTimer = setInterval(() => goTo(current + 1), 4000); }
+        function startAuto() { clearInterval(autoTimer); autoTimer = setInterval(() => goTo(current + 1), 4000); }
         function stopAuto() { clearInterval(autoTimer); }
 
         const sliderWrap = document.getElementById('sliderWrap');
