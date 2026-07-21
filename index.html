@@ -148,42 +148,44 @@
                         <div class="browser-url-bar">auditreadyglobal.uk</div>
                         <div class="browser-actions"></div>
                     </div>
-                    <div class="slide-viewport">
-                        <div class="slide active" data-slide="0">
-                            <img src="./audaitready-home-page.png" alt="AuditReady Landing Page" loading="lazy">
-                            <div class="slide-cap">Landing Page — Purpose-built for automotive suppliers</div>
-                        </div>
-                        <div class="slide" data-slide="1">
-                            <img src="./landing/dashboard-page.png" alt="Dashboard" loading="lazy">
-                            <div class="slide-cap">Dashboard — Real-time PPAP overview &amp; status tracking</div>
-                        </div>
-                        <div class="slide" data-slide="2">
-                            <img src="./landing/my-ppaps-page.png" alt="PPAP Projects" loading="lazy">
-                            <div class="slide-cap">PPAP Projects — Full lifecycle management with advanced filters</div>
-                        </div>
-                        <div class="slide" data-slide="3">
-                            <img src="./landing/PPAP-project-page.png" alt="PPAP Detail" loading="lazy">
-                            <div class="slide-cap">PPAP Detail — 18 elements, multi-file uploads &amp; versioning</div>
-                        </div>
-                        <div class="slide" data-slide="4">
-                            <img src="./landing/customer-review-page-for-approval.png" alt="Customer Review Portal" loading="lazy">
-                            <div class="slide-cap">Customer Portal — OEM review &amp; approval without login</div>
-                        </div>
-                        <div class="slide" data-slide="5">
-                            <img src="./landing/submit-for-approval-page.png" alt="Submit for Approval" loading="lazy">
-                            <div class="slide-cap">Submit Flow — One-click PPAP submission to OEM customer</div>
-                        </div>
-                        <div class="slide" data-slide="6">
-                            <img src="./landing/reports-page.png" alt="Reports" loading="lazy">
-                            <div class="slide-cap">Reports — Approval rates, aging reports &amp; submission trends</div>
-                        </div>
-                        <div class="slide" data-slide="7">
-                            <img src="./landing/Company-Wide-Statistics.png" alt="Company Statistics" loading="lazy">
-                            <div class="slide-cap">Admin Analytics — Company-wide PPAP statistics dashboard</div>
-                        </div>
-                        <div class="slide" data-slide="8">
-                            <img src="./landing/ai-review.png" alt="AI Review" loading="lazy">
-                            <div class="slide-cap">AI Review — Intelligent document analysis &amp; validation</div>
+                    <div class="slide-viewport" id="slideViewport">
+                        <div class="slide-track" id="slideTrack">
+                            <div class="slide" data-slide="0">
+                                <img src="./audaitready-home-page.png" alt="AuditReady Landing Page" loading="lazy" draggable="false">
+                                <div class="slide-cap">Landing Page — Purpose-built for automotive suppliers</div>
+                            </div>
+                            <div class="slide" data-slide="1">
+                                <img src="./landing/dashboard-page.png" alt="Dashboard" loading="lazy" draggable="false">
+                                <div class="slide-cap">Dashboard — Real-time PPAP overview &amp; status tracking</div>
+                            </div>
+                            <div class="slide" data-slide="2">
+                                <img src="./landing/my-ppaps-page.png" alt="PPAP Projects" loading="lazy" draggable="false">
+                                <div class="slide-cap">PPAP Projects — Full lifecycle management with advanced filters</div>
+                            </div>
+                            <div class="slide" data-slide="3">
+                                <img src="./landing/PPAP-project-page.png" alt="PPAP Detail" loading="lazy" draggable="false">
+                                <div class="slide-cap">PPAP Detail — 18 elements, multi-file uploads &amp; versioning</div>
+                            </div>
+                            <div class="slide" data-slide="4">
+                                <img src="./landing/customer-review-page-for-approval.png" alt="Customer Review Portal" loading="lazy" draggable="false">
+                                <div class="slide-cap">Customer Portal — OEM review &amp; approval without login</div>
+                            </div>
+                            <div class="slide" data-slide="5">
+                                <img src="./landing/submit-for-approval-page.png" alt="Submit for Approval" loading="lazy" draggable="false">
+                                <div class="slide-cap">Submit Flow — One-click PPAP submission to OEM customer</div>
+                            </div>
+                            <div class="slide" data-slide="6">
+                                <img src="./landing/reports-page.png" alt="Reports" loading="lazy" draggable="false">
+                                <div class="slide-cap">Reports — Approval rates, aging reports &amp; submission trends</div>
+                            </div>
+                            <div class="slide" data-slide="7">
+                                <img src="./landing/Company-Wide-Statistics.png" alt="Company Statistics" loading="lazy" draggable="false">
+                                <div class="slide-cap">Admin Analytics — Company-wide PPAP statistics dashboard</div>
+                            </div>
+                            <div class="slide" data-slide="8">
+                                <img src="./landing/ai-review.png" alt="AI Review" loading="lazy" draggable="false">
+                                <div class="slide-cap">AI Review — Intelligent document analysis &amp; validation</div>
+                            </div>
                         </div>
                         <button class="s-btn s-prev" id="slidePrev" aria-label="Previous">&#8249;</button>
                         <button class="s-btn s-next" id="slideNext" aria-label="Next">&#8250;</button>
@@ -638,6 +640,62 @@
     </footer>
 
     <script>
+        // Read once — every reduce-motion check on the page shares this (§14)
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // ── Spring engine — critically damped by default, interruptible,
+        //    velocity-aware. Reused by the slider drag (§3, §4, §5) ──────
+        function makeSpring(dampingRatio, response, mass = 1) {
+            const angularFreq = (2 * Math.PI) / response;
+            return {
+                stiffness: mass * angularFreq * angularFreq,
+                damping: (4 * Math.PI * dampingRatio * mass) / response,
+                mass,
+            };
+        }
+        function animateSpring({ from, velocity = 0, to, dampingRatio = 1, response = 0.4, onUpdate, onComplete }) {
+            let { stiffness, damping, mass } = makeSpring(dampingRatio, response);
+            let value = from, vel = velocity, target = to, raf, last = performance.now(), stopped = false;
+            function tick(now) {
+                if (stopped) return;
+                const dt = Math.min((now - last) / 1000, 1 / 30);
+                last = now;
+                const accel = (-stiffness * (value - target) - damping * vel) / mass;
+                vel += accel * dt;
+                value += vel * dt;
+                if (Math.abs(target - value) < 0.05 && Math.abs(vel) < 0.05) {
+                    stopped = true;
+                    onUpdate(target, 0);
+                    onComplete && onComplete();
+                    return;
+                }
+                onUpdate(value, vel);
+                raf = requestAnimationFrame(tick);
+            }
+            raf = requestAnimationFrame(tick);
+            return {
+                // Always retargets from the live presentation value + velocity — never
+                // the logical target — so a grab mid-flight never causes a jump (§3).
+                retarget(newTarget, newVelocity, newDampingRatio, newResponse) {
+                    target = newTarget;
+                    if (newVelocity !== undefined) vel = newVelocity;
+                    if (newDampingRatio !== undefined || newResponse !== undefined) {
+                        ({ stiffness, damping, mass } = makeSpring(newDampingRatio ?? dampingRatio, newResponse ?? response));
+                    }
+                    if (stopped) { stopped = false; last = performance.now(); raf = requestAnimationFrame(tick); }
+                },
+                cancel() { stopped = true; cancelAnimationFrame(raf); },
+            };
+        }
+        // Soft resistance past a boundary instead of a hard stop (§9)
+        function rubberband(overshoot, dimension, constant = 0.55) {
+            return (overshoot * dimension * constant) / (dimension + constant * Math.abs(overshoot));
+        }
+        // Projects where a flick's momentum would come to rest (§6)
+        function project(velocity, decelerationRate = 0.998) {
+            return ((velocity / 1000) * decelerationRate) / (1 - decelerationRate);
+        }
+
         // ── Scroll Reveal ─────────────────────────────────────────────
         const revealObs = new IntersectionObserver(entries => {
             entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); revealObs.unobserve(e.target); } });
@@ -666,45 +724,144 @@
             if (e.key === 'Escape' && navEl.classList.contains('nav-open')) setMenu(false);
         });
 
-        // ── Screenshot Slider ─────────────────────────────────────────
-        const slides = Array.from(document.querySelectorAll('.slide'));
+        // ── Screenshot Slider — direct manipulation drag with rubber-band
+        //    boundaries, momentum-projected flicks, and a fully interruptible
+        //    spring handoff (§2, §3, §5, §6, §9) ─────────────────────────
+        const viewport = document.getElementById('slideViewport');
+        const track = document.getElementById('slideTrack');
+        const slides = Array.from(track.children);
         const indicatorsEl = document.getElementById('slideIndicators');
+        const sliderWrap = document.getElementById('sliderWrap');
+
         let current = 0;
+        let pos = 0;              // live presentation value (translateX, px)
+        let slideWidth = viewport.clientWidth;
+        let activeSpring = null;
+        let dragging = false;
+        let dragStartX = 0;
+        let dragStartPos = 0;
+        let history = [];         // recent {x, t} for release-velocity calc
         let autoTimer = null;
 
         slides.forEach((_, i) => {
             const btn = document.createElement('button');
             btn.className = 'ind' + (i === 0 ? ' ind-active' : '');
             btn.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-            btn.addEventListener('click', () => { stopAuto(); goTo(i); startAuto(); });
+            btn.addEventListener('click', () => { stopAuto(); snapTo(i); startAuto(); });
             indicatorsEl.appendChild(btn);
         });
 
-        function goTo(idx) {
-            slides[current].classList.remove('active');
-            indicatorsEl.children[current].classList.remove('ind-active');
-            current = ((idx % slides.length) + slides.length) % slides.length;
-            slides[current].classList.add('active');
-            indicatorsEl.children[current].classList.add('ind-active');
+        function setTrackX(x) {
+            pos = x;
+            track.style.transform = `translate3d(${x}px,0,0)`;
+        }
+        function updateIndicators() {
+            Array.from(indicatorsEl.children).forEach((el, i) => el.classList.toggle('ind-active', i === current));
+        }
+        function measure() {
+            slideWidth = viewport.clientWidth;
+            if (!dragging && !activeSpring) setTrackX(-current * slideWidth);
+        }
+        window.addEventListener('resize', measure, { passive: true });
+
+        // Single path for buttons, indicators, autoplay, and drag release —
+        // always retargets from wherever the track live is (§3), and only
+        // bounces when the gesture itself carried momentum (§4).
+        function snapTo(index, velocity = 0) {
+            current = ((index % slides.length) + slides.length) % slides.length;
+            updateIndicators();
+            const target = -current * slideWidth;
+            const hasMomentum = Math.abs(velocity) > 80;
+            const dampingRatio = hasMomentum ? 0.8 : 1.0;
+            const response = 0.4;
+
+            if (reduceMotion) {
+                if (activeSpring) { activeSpring.cancel(); activeSpring = null; }
+                setTrackX(target);
+                return;
+            }
+            if (activeSpring) {
+                activeSpring.retarget(target, velocity, dampingRatio, response);
+            } else {
+                activeSpring = animateSpring({
+                    from: pos, velocity, to: target, dampingRatio, response,
+                    onUpdate: setTrackX,
+                    onComplete: () => { activeSpring = null; },
+                });
+            }
         }
 
-        document.getElementById('slidePrev').addEventListener('click', () => { stopAuto(); goTo(current - 1); startAuto(); });
-        document.getElementById('slideNext').addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto(); });
+        viewport.addEventListener('pointerdown', e => {
+            if (e.target.closest('.s-btn')) return; // let the buttons handle their own clicks
+            if (e.button !== undefined && e.button !== 0) return;
+            stopAuto();
+            if (activeSpring) { activeSpring.cancel(); activeSpring = null; }
+            dragging = true;
+            viewport.classList.add('dragging');
+            dragStartX = e.clientX;
+            dragStartPos = pos; // grab the live value, never the target (§3)
+            history = [{ x: e.clientX, t: performance.now() }];
+            try { viewport.setPointerCapture(e.pointerId); } catch { /* pointer already gone — 1:1 tracking still works without capture */ }
+        });
 
-        function startAuto() { clearInterval(autoTimer); autoTimer = setInterval(() => goTo(current + 1), 4000); }
+        // Bound to window, not the viewport: setPointerCapture can fail (or the
+        // finger can drift outside the element during a vertical-ish swipe), and
+        // a move/release must still be tracked and resolved wherever it lands.
+        window.addEventListener('pointermove', e => {
+            if (!dragging) return;
+            const dx = e.clientX - dragStartX;
+            let next = dragStartPos + dx;
+            const minX = -(slides.length - 1) * slideWidth;
+            const maxX = 0;
+            if (reduceMotion) {
+                next = Math.max(minX, Math.min(maxX, next));
+            } else if (next > maxX) {
+                next = maxX + rubberband(next - maxX, slideWidth);
+            } else if (next < minX) {
+                next = minX - rubberband(minX - next, slideWidth);
+            }
+            setTrackX(next); // 1:1 tracking, every frame (§1, §2)
+            history.push({ x: e.clientX, t: performance.now() });
+            if (history.length > 6) history.shift();
+        });
+
+        function endDrag(e) {
+            if (!dragging) return;
+            dragging = false;
+            viewport.classList.remove('dragging');
+            // Only the last ~100ms counts — a fast flick followed by a deliberate
+            // pause before release must read as ~0 velocity, not the earlier flick (§5)
+            const now = performance.now();
+            const recent = history.filter(p => now - p.t <= 100);
+            let velocity = 0;
+            if (recent.length >= 2) {
+                const a = recent[0], b = recent[recent.length - 1];
+                const dt = (b.t - a.t) / 1000;
+                if (dt > 0) velocity = (b.x - a.x) / dt;
+            }
+            const projected = reduceMotion ? pos : pos + project(velocity);
+            let targetIndex = Math.round(-projected / slideWidth);
+            targetIndex = Math.max(0, Math.min(slides.length - 1, targetIndex));
+            snapTo(targetIndex, velocity);
+            startAuto();
+        }
+        window.addEventListener('pointerup', endDrag);
+        window.addEventListener('pointercancel', endDrag);
+
+        document.getElementById('slidePrev').addEventListener('click', () => { stopAuto(); snapTo(current - 1); startAuto(); });
+        document.getElementById('slideNext').addEventListener('click', () => { stopAuto(); snapTo(current + 1); startAuto(); });
+
+        function startAuto() {
+            if (reduceMotion) return; // no unattended continuous motion (§14)
+            clearInterval(autoTimer);
+            autoTimer = setInterval(() => snapTo(current + 1), 4000);
+        }
         function stopAuto() { clearInterval(autoTimer); }
 
-        const sliderWrap = document.getElementById('sliderWrap');
         sliderWrap.addEventListener('mouseenter', stopAuto);
         sliderWrap.addEventListener('mouseleave', startAuto);
 
-        let touchStartX = 0;
-        sliderWrap.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
-        sliderWrap.addEventListener('touchend', e => {
-            const dx = e.changedTouches[0].clientX - touchStartX;
-            if (Math.abs(dx) > 50) { stopAuto(); goTo(current + (dx < 0 ? 1 : -1)); startAuto(); }
-        }, { passive: true });
-
+        measure();
         startAuto();
 
         // ── YouTube lite embed ────────────────────────────────────────
@@ -737,7 +894,6 @@
             document.body.append(dot, ring);
             document.body.classList.add('cursor-on');
 
-            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             let mx = 0, my = 0, rx = 0, ry = 0;
             let seen = false;
 
